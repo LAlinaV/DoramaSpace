@@ -1,4 +1,4 @@
-package com.example.filmspace.ui
+package com.example.filmspace.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -15,15 +15,11 @@ class WelcomeActivity : AppCompatActivity() {
         val signUpButton = findViewById<Button>(R.id.buttonSignUp)
 
         signInButton.setOnClickListener {
-            val intent = Intent(this, RegisterLoginActivity::class.java)
-            intent.putExtra("fragment", "SignIn")
-            startActivity(intent)
+            startActivity(Intent(this, LoginActivity::class.java))
         }
 
         signUpButton.setOnClickListener {
-            val intent = Intent(this, RegisterLoginActivity::class.java)
-            intent.putExtra("fragment", "SignUp")
-            startActivity(intent)
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }
