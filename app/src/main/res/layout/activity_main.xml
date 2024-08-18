@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id = "@+id/root_cont"
+    android:background="@color/lightPink"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity">
+
+  <TextView
+      android:id = "@+id/title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="25dp"
+      android:layout_marginTop="25dp"
+      android:layout_marginBottom="25dp"
+      android:text="Popular Doramas"
+      android:textColor="@color/brown"
+      android:textSize="26sp"
+      android:textStyle="bold"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/pull_to_refresh" />
+
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:id="@+id/pull_to_refresh"
+      android:layout_width="match_parent"
+      android:background="@color/lightGrey"
+      android:layout_height="590dp"
+      android:paddingStart="10dp"
+      android:paddingEnd="10dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/title"
+      app:layout_constraintBottom_toTopOf="@id/buttons"
+      app:layout_constraintEnd_toEndOf="parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id ="@+id/chats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        />
+
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+  <LinearLayout
+      android:id="@+id/buttons"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:gravity="center"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/pull_to_refresh"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent">
+    <Button
+        android:id="@+id/buttonPopular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/pink"
+        android:layout_marginHorizontal="25dp"
+        android:text="Popular"/>
+
+    <Button
+        android:id="@+id/buttonFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/pink"
+        android:layout_marginHorizontal="25dp"
+        android:text="Favorite"/>
+  </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
