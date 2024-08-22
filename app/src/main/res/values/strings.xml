@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">DoramaSpace</string>
+
+    <string name="textSplashScreen">Dorama Space</string>
+
+    <string name="sign_in">Войти</string>
+    <string name="sign_up">Зарегестрироваться</string>
+    <string name="welcome_title">Добро пожаловать в Dorama Space!</string>
+    <string name="welcome_under_title">Здесь Вы можеть смотоеть свои любимые Дорамы</string>
+
+    <string name="login_title">Вход\n Dorama Space</string>
+    <string name="login_title_horiz">Вход Dorama Space</string>
+    <string name="email">Электронная почта</string>
+    <string name="password">Пароль</string>
+
+    <string name="register_title">Регистрация\n Dorama Space</string>
+    <string name="register_title_horiz">Регистрация Dorama Space</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="confirm_password">Подтвердите Пароль</string>
+    <string name="register_scroll">Пролистайте</string>
+
+    <string name="popular">Популярное</string>
+    <string name="favorite">Избранное</string>
+    <string name="popular_doramas">Популярные Дорамы</string>
+    <string name="favorite_doramas">Избранные Дорамы</string>
+
+    <string name="choose_seria">Выберите серию</string>
+    <string name="seria">Серия</string>
+
+    <string name="login_success">Успешно вошли</string>
+    <string name="login_fail">Ошибка входа</string>
+    <string name="successfully_singed_up">Зарегестрировались успешно</string>
+    <string name="fail_singed_up">Зарегестрировались успешно</string>
+    <string name="name_require">Имя обязательно</string>
+    <string name="surname_require">Фамилия обязательна</string>
+    <string name="email_require">Электронная почта обязательна</string>
+    <string name="email_invalid">Почтовый адрес некорректный</string>
+    <string name="password_require">Пароль обязателен</string>
+    <string name="password_min_length">Минимальнаое количество символов 6</string>
+    <string name="confirm_password_require">Подтверждение пароля обязательно</string>
+    <string name="confirm_password_min_length">Минимальнаое количество символов 6</string>
+    <string name="confirm_password_password">Подтвержение пароля не совпадает с паролем</string>
+</resources>

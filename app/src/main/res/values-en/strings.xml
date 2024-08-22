@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DoramaSpace</string>
+
+    <string name="textSplashScreen">Dorama Space</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="welcome_title">Welcome To Dorama Space!</string>
+    <string name="welcome_under_title">Here you can watch your favorite Doramas</string>
+
+    <string name="login_title">Sign In To\n Dorama Space</string>
+    <string name="login_title_horiz">Sign In To Dorama Space</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="register_title">Sign Un To\n Dorama Space</string>
+    <string name="register_title_horiz">Sign Un To Dorama Space</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register_scroll">Scroll to Sign Up</string>
+
+    <string name="popular">Popular</string>
+    <string name="favorite">Favorite</string>
+    <string name="popular_doramas">Popular Doramas</string>
+    <string name="favorite_doramas">Favorite Doramas</string>
+
+    <string name="choose_seria">Choose episode</string>
+    <string name="seria">Episode</string>
+
+
+
+    <string name="login_success">Successfully LoggedIn</string>
+    <string name="login_fail">Log In failed</string>
+    <string name="successfully_singed_up">Successfully Singed Up</string>
+    <string name="fail_singed_up">Singed Up Failed</string>
+    <string name="name_require">First Name is required</string>
+    <string name="surname_require">Last Name is required</string>
+    <string name="email_require">Email is required</string>
+    <string name="email_invalid">Email address is invalid</string>
+    <string name="password_require">Password is required</string>
+    <string name="password_min_length">Password must be 6 characters long</string>
+    <string name="confirm_password_require">Confirm Password is required</string>
+    <string name="confirm_password_min_length">Confirm Password must be 6 characters long</string>
+    <string name="confirm_password_password">Confirm Password does not match with Password</string>
+</resources>
