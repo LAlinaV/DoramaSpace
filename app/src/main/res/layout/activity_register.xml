@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Sign Up to \nDorama Space"
+        android:text="@string/register_title"
         android:textColor="@color/red"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +46,7 @@
                     android:id="@+id/inputName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="First Name"
+                    android:hint="@string/first_name"
                     android:inputType="text"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="12dp" />
@@ -63,7 +63,7 @@
                     android:id="@+id/inputSurname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Last Name"
+                    android:hint="@string/last_name"
                     android:inputType="text"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="12dp" />
@@ -80,7 +80,7 @@
                     android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="12dp" />
@@ -100,7 +100,7 @@
                     android:id="@+id/inputPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:maxLength="15"
                     android:paddingHorizontal="8dp"
@@ -121,7 +121,7 @@
                     android:id="@+id/inputPassword2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Confirm Password"
+                    android:hint="@string/confirm_password"
                     android:inputType="textPassword"
                     android:maxLength="15"
                     android:paddingHorizontal="8dp"
@@ -133,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/pink"
-                android:text="Sign Up"
+                android:text="@string/sign_up"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
                 />
