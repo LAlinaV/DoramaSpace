@@ -40,12 +40,12 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, View.OnFocus
         }
         auth.createUserWithEmailAndPassword(mBinding.inputEmail.text.toString(), mBinding.inputPassword.text.toString()).addOnCompleteListener(this) {
             if (it.isSuccessful) {
-                Toast.makeText(this, "Successfully Singed Up", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.successfully_singed_up), Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
 
             } else {
-                Toast.makeText(this, "Singed Up Failed!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fail_singed_up), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, View.OnFocus
         var errorMessg:String? = null
         val value: String = mBinding.inputName.text.toString()
         if(value.isEmpty()){
-            errorMessg = "First Name is required"
+            errorMessg = getString(R.string.name_require)
         }
         if(errorMessg != null){
             mBinding.inputNameL.apply {
@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, View.OnFocus
         var errorMessg:String? = null
         val value: String = mBinding.inputSurname.text.toString()
         if(value.isEmpty()){
-            errorMessg = "Last Name is required"
+            errorMessg = getString(R.string.surname_require)
         }
         if(errorMessg != null){
             mBinding.inputSurnameL.apply {
@@ -83,9 +83,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, View.OnFocus
         var errorMessg:String? = null
         val value: String = mBinding.inputEmail.text.toString()
         if(value.isEmpty()){
-            errorMessg = "Email is required"
+            errorMessg = getString(R.string.email_require)
         } else if (!Patterns.EMAIL_ADDRESS.matcher(value).matches()) {
-            errorMessg = "Email address is invalid"
+            errorMessg = getString(R.string.email_invalid)
         }
         if(errorMessg != null){
             mBinding.inputEmailL.apply {
@@ -100,9 +100,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, View.OnFocus
         var errorMessg:String? = null
         val value: String = mBinding.inputPassword.text.toString()
         if(value.isEmpty()){
-            errorMessg = "Password is required"
+            errorMessg = getString(R.string.password_require)
         } else if (value.length < 6) {
-            errorMessg = "Password must be 6 characters long"
+            errorMessg = getString(R.string.password_min_length)
         }
         if(errorMessg != null){
             mBinding.inputPasswordL.apply {
@@ -117,9 +117,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, View.OnFocus
         var errorMessg:String? = null
         val value: String = mBinding.inputPassword2.text.toString()
         if(value.isEmpty()){
-            errorMessg = "Confirm Password is required"
+            errorMessg = getString(R.string.confirm_password_require)
         } else if (value.length < 6) {
-            errorMessg = "Confirm Password must be 6 characters long"
+            errorMessg = getString(R.string.confirm_password_min_length)
         }
         if(errorMessg != null){
             mBinding.inputPassword2L.apply {
@@ -135,7 +135,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener, View.OnFocus
         val value1: String = mBinding.inputPassword.text.toString()
         val value2: String = mBinding.inputPassword2.text.toString()
         if(value1 != value2){
-            errorMessg = "Confirm Password doesn't match with Password"
+            errorMessg = getString(R.string.confirm_password_password)
         }
         if(errorMessg != null){
             mBinding.inputPassword2L.apply {

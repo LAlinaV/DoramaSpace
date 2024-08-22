@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
+import com.example.filmspace.R
 import com.example.filmspace.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -30,11 +31,11 @@ class LoginActivity : AppCompatActivity() {
 
         auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this) {
             if (it.isSuccessful) {
-                Toast.makeText(this, "Successfully LoggedIn", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
-                finish() //??????
+                finish()
             } else
-                Toast.makeText(this, "Log In failed ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.login_fail), Toast.LENGTH_SHORT).show()
         }
     }
 }

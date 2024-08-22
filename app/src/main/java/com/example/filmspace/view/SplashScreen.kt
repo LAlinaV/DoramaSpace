@@ -1,4 +1,4 @@
-package com.example.filmspace.ui
+package com.example.filmspace.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +17,7 @@ class SplashScreen : AppCompatActivity() {
 
     private fun loadSplashScreen(){
         Handler().postDelayed({
-
-            val intent = Intent(this,WelcomeActivity::class.java)
+            val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
             finish()
         },TIME_OUT)
