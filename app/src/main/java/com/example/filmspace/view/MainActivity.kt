@@ -1,46 +1,74 @@
 package com.example.filmspace.view
 
 import Dorama
+import DoramaRepository
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.filmspace.R
 import com.example.filmspace.viewModel.DoramaAdapter
-import com.example.filmspace.viewModel.DoramaRepository
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import com.google.firebase.database.FirebaseDatabase
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var doramaRecyclerView: RecyclerView
     private val doramaRepository= DoramaRepository()
+    lateinit var db: FirebaseDatabase
+    lateinit var doramaAdapter: DoramaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        db = FirebaseDatabase.getInstance()
+        doramaRepository.readFileDoramas(this)
+        doramaAdapter = DoramaAdapter(emptyList(), db, doramaRepository)
+        doramaRepository.readFavoriteDoramas(db) {
+            doramaAdapter.updateDoramas(doramaRepository.getPopular())
+        }
+
         setContentView(R.layout.activity_main)
         var isFavorite = false
         val popular = findViewById<Button>(R.id.buttonPopular)
         val favorite = findViewById<Button>(R.id.buttonFavorite)
         val titlePage = findViewById<TextView>(R.id.title)
         val buttonLogout = findViewById<ImageButton>(R.id.buttonLogout)
-
-
-        val doramas = listOf(
-            Dorama(1,  /*ContextCompat.getDrawable(this, R.drawable.welcome), */"Title 1", "Description 1", 2021, 12, 3, mutableListOf("Series 1", "Series 2"), mutableListOf("Track 1", "Track 2")),
-            Dorama(2, /*ContextCompat.getDrawable(this, R.drawable.baseline_camera_24),*/ "Title 2", "Description 2", 2020, 10, 2, mutableListOf("Series 1", "Series 2"), mutableListOf("Track 1", "Track 2"))
-        )
-
-
+        val pullToRefresh: SwipeRefreshLayout = findViewById(R.id.pull_to_refresh)
         doramaRecyclerView = findViewById(R.id.chats)
-        val doramaAdapter = DoramaAdapter(doramaRepository.getPopular(this))
+
+
+
+
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        doramaRecyclerView.adapter = doramaAdapter
+        doramaRecyclerView.layoutManager = layoutManager
+        doramaRecyclerView.addItemDecoration(DividerItemDecoration(this, layoutManager.orientation))
+        /*chatsRecyclerView.addItemDecoration(ChatPreviewOffsetItemDecoration(
+            bottomOffset = 16f.toInt(),
+            topOffset = 16f.toInt()
+        ))*/
+
+
+
+        pullToRefresh.setOnRefreshListener {
+            if(isFavorite){
+                doramaAdapter.updateDoramas( doramaRepository.getFavorite())
+                pullToRefresh.isRefreshing = false
+            } else {
+
+                doramaAdapter.updateDoramas(doramaRepository.getPopular())
+                pullToRefresh.isRefreshing = false
+
+            }
+        }
 
         doramaAdapter.setOnClickListener(object : DoramaAdapter.OnClickListener {
             override fun onClick(position: Int, model: Dorama) {
@@ -53,39 +81,15 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        doramaRecyclerView.adapter = doramaAdapter
-        doramaRecyclerView.layoutManager = layoutManager
-
-        doramaRecyclerView.addItemDecoration(DividerItemDecoration(this, layoutManager.orientation))
-        /*chatsRecyclerView.addItemDecoration(ChatPreviewOffsetItemDecoration(
-            bottomOffset = 16f.toInt(),
-            topOffset = 16f.toInt()
-        ))*/
-        val pullToRefresh: SwipeRefreshLayout = findViewById(R.id.pull_to_refresh)
-        pullToRefresh.setOnRefreshListener {
-            if(isFavorite){
-                doramaAdapter.updateDoramas( doramaRepository.getFavorite(this))
-                //doramaAdapter.updateDoramas(doramas)
-                pullToRefresh.isRefreshing = false
-            } else {
-                doramaAdapter.updateDoramas(doramaRepository.getPopular(this))
-                //doramaAdapter.updateDoramas(doramas)
-                pullToRefresh.isRefreshing = false
-            }
-        }
-
         popular.setOnClickListener {
-            doramaAdapter.updateDoramas(doramaRepository.getPopular(this))
-            //doramaAdapter.updateDoramas(doramas)
-            titlePage.setText("Popular Doramas")
+            doramaAdapter.updateDoramas(doramaRepository.getPopular())
+            titlePage.setText(R.string.popular_doramas)
             isFavorite = false
         }
 
         favorite.setOnClickListener {
-            doramaAdapter.updateDoramas(doramaRepository.getFavorite(this))
-            //doramaAdapter.updateDoramas(doramas)
-            titlePage.setText("Favorite Doramas")
+            doramaAdapter.updateDoramas(doramaRepository.getFavorite())
+            titlePage.setText(R.string.favorite_doramas)
             isFavorite = true
         }
 
