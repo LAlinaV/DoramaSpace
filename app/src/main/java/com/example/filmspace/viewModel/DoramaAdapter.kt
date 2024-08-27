@@ -1,8 +1,7 @@
 package com.example.filmspace.viewModel
 
-import Dorama
-import DoramaRepository
-import android.media.Image
+import com.example.filmspace.model.Dorama
+import com.example.filmspace.model.DoramaRepository
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
