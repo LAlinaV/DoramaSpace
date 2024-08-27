@@ -45,24 +45,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/buttonSignIn"
                     android:backgroundTint="@color/pink"
-                    android:layout_width="0dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:text="@string/sign_in" />
 
                 <Button
                     android:id="@+id/buttonSignUp"
                     android:backgroundTint="@color/pink"
-                    android:layout_width="0dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:layout_margin="2dp"
                     android:text="@string/sign_up" />
             </LinearLayout>
         </LinearLayout>
