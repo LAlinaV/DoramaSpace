@@ -1,10 +1,9 @@
 package com.example.filmspace.view
 
-import Dorama
-import DoramaRepository
+import com.example.filmspace.model.Dorama
+import com.example.filmspace.model.DoramaRepository
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -25,18 +24,32 @@ class MainActivity : AppCompatActivity() {
     private val doramaRepository= DoramaRepository()
     lateinit var db: FirebaseDatabase
     lateinit var doramaAdapter: DoramaAdapter
+    var isFavorite = false
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("state", isFavorite.toString())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (savedInstanceState != null) {
+            isFavorite = if(savedInstanceState.getString("state") == "true") true else false
+        }
         db = FirebaseDatabase.getInstance()
         doramaRepository.readFileDoramas(this)
         doramaAdapter = DoramaAdapter(emptyList(), db, doramaRepository)
         doramaRepository.readFavoriteDoramas(db) {
-            doramaAdapter.updateDoramas(doramaRepository.getPopular())
+            if(isFavorite){
+                doramaAdapter.updateDoramas(doramaRepository.getFavorite())
+            } else {
+                doramaAdapter.updateDoramas(doramaRepository.getPopular())
+            }
         }
 
         setContentView(R.layout.activity_main)
-        var isFavorite = false
+
+
         val popular = findViewById<Button>(R.id.buttonPopular)
         val favorite = findViewById<Button>(R.id.buttonFavorite)
         val titlePage = findViewById<TextView>(R.id.title)
@@ -44,7 +57,9 @@ class MainActivity : AppCompatActivity() {
         val pullToRefresh: SwipeRefreshLayout = findViewById(R.id.pull_to_refresh)
         doramaRecyclerView = findViewById(R.id.chats)
 
-
+        if(isFavorite){
+            titlePage.setText(R.string.popular_doramas)
+        }
 
 
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
