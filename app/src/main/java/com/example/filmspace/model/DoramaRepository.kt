@@ -1,5 +1,6 @@
+package com.example.filmspace.model
+
 import android.content.Context
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -101,7 +102,7 @@ class DoramaRepository {
         return doramas.filter { it.isFavorite }
     }
 
-    fun isFavorite(dorama:Dorama): Boolean{
+    fun isFavorite(dorama: Dorama): Boolean{
         val index = doramas.indexOfFirst { it.id == dorama.id }
         if (index != -1) {
             return (doramas[index].isFavorite)

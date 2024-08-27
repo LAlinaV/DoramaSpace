@@ -1,3 +1,5 @@
+package com.example.filmspace.model
+
 import java.io.Serializable
 
 data class Dorama(
