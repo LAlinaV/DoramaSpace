@@ -6,7 +6,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.example.filmspace.R
-import com.example.filmspace.data.DoramaSeria
+import com.example.filmspace.model.DoramaSeria
 import com.example.filmspace.databinding.ActivitySeriaBinding
 
 class SeriaActivity : AppCompatActivity() {
